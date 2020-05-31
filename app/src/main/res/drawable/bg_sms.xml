@@ -1,0 +1,11 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid
+        android:color="@color/sms_bg_color"/>
+
+    <stroke
+        android:width="1dp" android:color="@color/sms_bg_stroke"/>
+
+    <corners
+        android:radius="3dp" />
+
+</shape>

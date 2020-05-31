@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cz.itnetwork.activities">
+
+    <!-- Výčet oprávnění, která aplikace požaduje -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- Hlavní aktivita -->
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Aktivita A -->
+        <activity
+            android:name=".ActivityA"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <!-- Aktivita B -->
+        <activity
+            android:name=".ActivityB"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <!-- Aktivita C -->
+        <activity
+            android:name=".ActivityC"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <!-- Aktivita D -->
+        <activity
+            android:name=".ActivityD"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <!-- Aktivita E -->
+        <activity
+            android:name=".ActivityE"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <!-- Aktivita pro součet dvou čísel -->
+        <activity
+            android:name=".ActivitySum"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <!-- File provider potřebný pro API 23 a vyšší -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="cz.itnetwork.activities.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+
+    </application>
+
+</manifest>
