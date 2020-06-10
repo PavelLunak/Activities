@@ -11,29 +11,29 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 /*
-Aktivita uživateli umožňuje do pole vložit jakýkoliv text, který dále může sdílet
+Aktivita uživateli umožňuje do políčka vložit jakýkoliv text, který dále může sdílet do jiných aplikací
 */
 
 public class ActivityE extends AppCompatActivity {
 
-    EditText etTextToShareText; //Pole pro zadání textu
-    ImageView imgShare;         //Obrázek (tlačítko) pro sdílení zadaného textu
+    EditText etTextToShareText;     // Políčko pro zadání textu
+    ImageView imgShare;             // Obrázek (tlačítko) pro sdílení zadaného textu
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Nastavení připraveného XML návrhu grafického uživatelského rozhraní této aktivitě
+        // Nastavení připraveného XML návrhu grafického uživatelského rozhraní této aktivitě
         setContentView(R.layout.activity_e);
 
-        //Nastavení textu toolbaru
+        // Nastavení textu toolbaru
         setTitle(R.string.activity_e_title);
 
-        //Reference na komponenty v XML návrhu
+        // Reference na komponenty v XML návrhu
         etTextToShareText = findViewById(R.id.etTextToShareText);
         imgShare = findViewById(R.id.imgShare);
 
-        //Odchycení události stisknutí tlačítka pro sdílení
+        // Odchycení události stisknutí tlačítka pro sdílení
         imgShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,18 +50,18 @@ public class ActivityE extends AppCompatActivity {
     }
 
     private void shareText(String text) {
-        //Vytvoření implicitního intentu
+        // Vytvoření implicitního intentu
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
 
-        //Určení typu odesílaných dat
+        // Určení typu odesílaných dat
         shareIntent.setType("text/plain");
 
-        //Přidání dat do intentu (uživatelem vložený text)
+        // Přidání dat do intentu (uživatelem vložený text)
         shareIntent.putExtra(Intent.EXTRA_TEXT, text);
 
-        //Test, zda je v zařízení nainstalovaná nějaká aplikace, schopná vytvořený intent splnit
+        // Test, zda je v zařízení nainstalovaná nějaká aplikace, schopná vytvořený intent splnit
         if (shareIntent.resolveActivity(getPackageManager()) != null) {
-            //Otevření okna s výběrem aplikací (je-li jich více), schopných intent zpracovat.
+            // Otevření okna s výběrem aplikací (je-li jich více), schopných intent zpracovat.
             startActivity(Intent.createChooser(shareIntent, getString(R.string.share)));
         }
     }

@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,14 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 /*
 V této aktivitě uživatel do textového pole vyplní telefonní číslo, na které následně může poslat SMS
 nebo zahájit tel. hovor. V obou případech je od systému požadováno otevření příslušné systémové
-aktivity - pro psaní SMS nebo pro správu tel. hovorů. Délku zadávaného tel. čísla kontrolujeme
-v průběhu jeho zadávání a požadujeme minimálně 9 znaků.
+aktivity - pro psaní SMS nebo pro správu tel. hovorů.
 */
 
 public class ActivityC extends AppCompatActivity {
 
-    EditText etPhoneNumber;     // Pole pro zadání tel. čísla
-    EditText etSmsText;         // Pole pro zadání textu SMS
+    EditText etPhoneNumber;     // Políčko pro zadání tel. čísla
+    EditText etSmsText;         // Políčko pro zadání textu SMS
     Button btnDial;             // Tlačítko pro vytočení tel. čísla
     Button btnSms;              // Tlačítko pro odeslání SMS
 
@@ -57,7 +55,7 @@ public class ActivityC extends AppCompatActivity {
         }
 
         // EditTextům nastavíme listener, který bude sledovat změny zadaného textu. Zde budeme
-        // v průběhu zadávání čísla kontrolovat jeho délku
+        // v průběhu zadávání čísla kontrolovat jeho správný formát
         etPhoneNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -82,7 +80,7 @@ public class ActivityC extends AppCompatActivity {
         });
     }
 
-    //Metoda pro obsluhu události kliknutí na tlačítko "Zavolat"
+    // Metoda pro obsluhu události kliknutí na tlačítko "Zavolat"
     public void dial(View view) {
         // Vytvoření implicitního intentu
         Intent callIntent = new Intent(Intent.ACTION_DIAL);
@@ -96,7 +94,7 @@ public class ActivityC extends AppCompatActivity {
         }
     }
 
-    //Metoda pro obsluhu události kliknutí na tlačítko "Poslat SMS"
+    // Metoda pro obsluhu události kliknutí na tlačítko "Poslat SMS"
     public void sendSms(View view) {
         String smsText = "";
 
@@ -119,6 +117,7 @@ public class ActivityC extends AppCompatActivity {
         }
     }
 
+    // Metoda pro kontolu správného formátu zadaného tel. čísla
     private boolean validatePhoneNumber(Editable input) {
         if (input == null) {
             phoneNumber = "";
@@ -151,15 +150,13 @@ public class ActivityC extends AppCompatActivity {
         00420123456789, 00420-123-456-789, 00420 123 456 789, 00420-123 456-789
         */
 
-        //Regulární výraz jako vzor správného formátu tel. čísla
+        // Regulární výraz jako vzor správného formátu tel. čísla
         String pattern = "^((\\+|00){1}\\d{3})?( |-)?[1-9][0-9]{2}( |-)?[0-9]{3}( |-)?[0-9]{3}$";
 
         if (inputText.matches(pattern)) {
-            Log.d("phone_nb", "TRUE");
             phoneNumber = inputText;
             return true;
         } else {
-            Log.d("phone_nb", "FALSE");
             phoneNumber = "";
             return false;
         }

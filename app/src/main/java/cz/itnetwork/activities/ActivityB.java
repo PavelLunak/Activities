@@ -20,12 +20,12 @@ požadavek na otevřené nějaké aplikace, která umí souřadnice zobrazit v m
 /*
 Tato aktivita v hlavičce implementuje rozhraní View.OnClickListener. Tímto se celý tento kontext
 stává posluchačem události kliknutí - viz nastavování onClickListenerů dále... Na konci této třídy
-je (povinné) překrytí metody onClick(), kde s událostmi kliknutí dále pracujeme.
+je (povinné) překrytí metody onClick() listeneru View.OnClickListener.
 */
 public class ActivityB extends AppCompatActivity implements View.OnClickListener {
 
-    SeekBar seekBarLatitude;        //  Posuvník pro nastavení zeměpisné šířky
-    SeekBar seekBarLongitude;       //  Posuvník pro nastavení zeměpisné výšky
+    SeekBar seekBarLatitude;        // Posuvník pro nastavení zeměpisné šířky
+    SeekBar seekBarLongitude;       // Posuvník pro nastavení zeměpisné výšky
     TextView labelLatitude;         // Label pro nastavenou šířku
     TextView labelLongitude;        // Label pro nastavení výšky
     ImageButton btnLatitudeMinus;   // Odečtení 0,1 od aktuálně nastavené šířky
@@ -59,7 +59,7 @@ public class ActivityB extends AppCompatActivity implements View.OnClickListener
         btnLongitudePlus = findViewById(R.id.btnLongitudePlus);
         btnSend = findViewById(R.id.btnSend);
 
-        // Nastavení listenerů kliknutí těm komponentám, které potřebujeme takto vybavit
+        // Nastavení listenerů kliknutí komponentám
         btnLatitudeMinus.setOnClickListener(this);
         btnLatitudePlus.setOnClickListener(this);
         btnLongitudeMinus.setOnClickListener(this);
@@ -95,7 +95,7 @@ public class ActivityB extends AppCompatActivity implements View.OnClickListener
 
                 // Maximální hodnoty jsou zároveň vynásobeny deseti proto, že chceme pracovat
                 // s desetinnými čísly s přesností na jedno desetinné místo.
-                // Desetinné číslo získáváme vydělením nastavené posuvníku pozice desíti.
+                // Desetinné číslo získáváme vydělením nastavené pozice desíti.
             }
 
             @Override
@@ -130,7 +130,7 @@ public class ActivityB extends AppCompatActivity implements View.OnClickListener
 
     // Metoda pro odeslání požadavku systému - otevření mapy
     private void showMap(double latitude, double longitude) {
-        // Příprava potřebných dat pro intent zobrazení souřadnic na mapě.
+        // Příprava potřebných dat pro intent pro zobrazení souřadnic na mapě.
         // Formát dat pro mapy je pevně stanoven a další možnosti naleznete zde:
         // https://developers.google.com/maps/documentation/urls/android-intents
         Uri data = Uri.parse("geo:0,0?q=" + latitude + "," + longitude);
@@ -140,12 +140,12 @@ public class ActivityB extends AppCompatActivity implements View.OnClickListener
 
         // Pokud následující zakomentovaný řádek odkomentujete, nebude uživateli zobrazen seznam
         // aplikací, které umí mapu zobrazit, ale rovnou bude otevřena aplikace GoogleMaps, pokud je
-        //  v zařízení nainstalována.
+        // v zařízení nainstalována.
 
         // mapIntent.setPackage("com.google.android.apps.maps");
 
         // Zeptáme se systému, jestli je v zařízení nainstalována nějaká aplikace, která umí daný
-        // intent splnit. Pokud by zde tato podmínka nebyla a v zařízení nebyla žádná potřebná aplikace,
+        // intent splnit. Pokud by zde tato podmínka nebyla a v zařízení nebyla žádná vhodn8 aplikace,
         // došlo by k pádu aplikace.
         if (mapIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(mapIntent);
@@ -158,22 +158,22 @@ public class ActivityB extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btnLatitudeMinus: // Odebrání hodnoty 0,1 ze zeměpisné šířky
+            case R.id.btnLatitudeMinus: // Zmenšení hodnoty o 0,1
                 if (latitude > AppConstants.LATITUDE_MIN) {
                     seekBarLatitude.setProgress(seekBarLatitude.getProgress() - 1);
                 }
                 break;
-            case R.id.btnLatitudePlus:  // Přidání hodnoty 0,1 k zeměpisné šířce
+            case R.id.btnLatitudePlus:  // Zvýštšení hodnoty o 0,1
                 if (latitude < AppConstants.LATITUDE_MAX) {
                     seekBarLatitude.setProgress(seekBarLatitude.getProgress() + 1);
                 }
                 break;
-            case R.id.btnLongitudeMinus:    // Odebrání hodnoty 0,1 ze zeměpisné výšky
+            case R.id.btnLongitudeMinus:    // Zmenšení hodnoty o 0,1
                 if (longitude > AppConstants.LONGITUDE_MIN) {
                     seekBarLongitude.setProgress(seekBarLongitude.getProgress() - 1);
                 }
                 break;
-            case R.id.btnLongitudePlus:     // Přidání hodnoty 0,1 k zeměpisné výšce
+            case R.id.btnLongitudePlus:     // Zvýštšení hodnoty o 0,1
                 if (longitude < AppConstants.LONGITUDE_MAX) {
                     seekBarLongitude.setProgress(seekBarLongitude.getProgress() + 1);
                 }

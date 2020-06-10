@@ -63,7 +63,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <EditText
-                android:id="@+id/etNumberOne"
+                android:id="@+id/etNumber1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -83,10 +83,10 @@
                 android:textColor="@color/text_color_activity_a"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etNumberOne" />
+                app:layout_constraintTop_toBottomOf="@+id/etNumber1" />
 
             <EditText
-                android:id="@+id/etNumberTwo"
+                android:id="@+id/etNumber2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -106,7 +106,7 @@
                 android:textColor="@color/text_color_activity_a"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/etNumberTwo" />
+                app:layout_constraintTop_toBottomOf="@+id/etNumber2" />
 
             <TextView
                 android:id="@+id/labelResult"
