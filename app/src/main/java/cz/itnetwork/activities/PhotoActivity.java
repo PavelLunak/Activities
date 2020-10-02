@@ -63,8 +63,7 @@ sdílet na sociálních sítích atd. Kliknutím na zobrazený obrázek požád�
 otevřel v prohlížeči obrázku, je-li v zařízení nějaký nainstalován.
 */
 
-public class ActivityD extends AppCompatActivity {
-
+public class PhotoActivity extends AppCompatActivity {
     ImageView image;                    // Zde bude zobrazen vybraný obrázek (pořízená fotografie)
     ImageView imgShare;                 // Tlačítko (obrázek) pro sdílení připraveného obrázku (fotografie)
 
@@ -78,7 +77,7 @@ public class ActivityD extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Nastavení připraveného XML návrhu grafického uživatelského rozhraní této aktivitě
-        setContentView(R.layout.activity_d);
+        setContentView(R.layout.photo_activity);
 
         // Nastavení textu toolbaru
         setTitle(R.string.activity_d_title);
@@ -364,7 +363,7 @@ public class ActivityD extends AppCompatActivity {
             // Pokud seznam není prázdný, musíme uživatele požádat o tato chybějící oprávnění
             if (!requests.isEmpty()) {
                 ActivityCompat.requestPermissions(
-                        ActivityD.this,
+                        PhotoActivity.this,
                         requests.toArray(new String[requests.size()]),
                         1);
             } else {
@@ -407,7 +406,7 @@ public class ActivityD extends AppCompatActivity {
             for (int i = 0; i < grantResults.length; i ++) {
                 if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
                     // Uživatel oprávnění neudělil - nelze pokračovat spuštěním fotoaparátu.
-                    Toast.makeText(ActivityD.this, R.string.info_missing_permissions, Toast.LENGTH_LONG).show();
+                    Toast.makeText(PhotoActivity.this, R.string.info_missing_permissions, Toast.LENGTH_LONG).show();
                     return;
                 }
             }
@@ -435,8 +434,8 @@ public class ActivityD extends AppCompatActivity {
                     if(android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
                         bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
                     } else {
-                         ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(), selectedImage);
-                         bitmap = ImageDecoder.decodeBitmap(source);
+                        ImageDecoder.Source source = ImageDecoder.createSource(this.getContentResolver(), selectedImage);
+                        bitmap = ImageDecoder.decodeBitmap(source);
                     }
 
                     // Zmenšení obrázku

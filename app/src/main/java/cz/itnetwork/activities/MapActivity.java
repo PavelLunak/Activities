@@ -44,8 +44,7 @@ Tato aktivita v hlavičce implementuje rozhraní View.OnClickListener. Tímto se
 stává posluchačem události kliknutí - viz nastavování onClickListenerů dále... Na konci této třídy
 je (povinné) překrytí metody onClick() listeneru View.OnClickListener.
 */
-public class ActivityB extends AppCompatActivity implements View.OnClickListener {
-
+public class MapActivity extends AppCompatActivity implements View.OnClickListener {
     SeekBar seekBarLatitude;        // Posuvník pro nastavení zeměpisné šířky
     SeekBar seekBarLongitude;       // Posuvník pro nastavení zeměpisné výšky
     TextView labelLatitude;         // Label pro nastavenou šířku
@@ -65,7 +64,7 @@ public class ActivityB extends AppCompatActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
 
         // Nastavení připraveného XML návrhu grafického uživatelského rozhraní této aktivitě
-        setContentView(R.layout.activity_b);
+        setContentView(R.layout.map_activity);
 
         // Nastavení textu toolbaru
         setTitle(R.string.activity_b_title);

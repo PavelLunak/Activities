@@ -51,24 +51,24 @@ public class MainActivity extends AppCompatActivity {
     public void click(View view) {
         switch (view.getId()) {
             case R.id.btnA:
-                Intent intentA = new Intent(MainActivity.this, ActivityA.class);
-                startActivity(intentA);
+                Intent intentSumActivity = new Intent(MainActivity.this, SumActivity.class);
+                startActivity(intentSumActivity);
                 break;
             case R.id.btnB:
-                Intent intentB = new Intent(MainActivity.this, ActivityB.class);
-                startActivity(intentB);
+                Intent intentMapActivity = new Intent(MainActivity.this, MapActivity.class);
+                startActivity(intentMapActivity);
                 break;
             case R.id.btnC:
-                Intent intentC = new Intent(MainActivity.this, ActivityC.class);
-                startActivity(intentC);
+                Intent intentPhoneActivity = new Intent(MainActivity.this, PhoneActivity.class);
+                startActivity(intentPhoneActivity);
                 break;
             case R.id.btnD:
-                Intent intentD = new Intent(MainActivity.this, ActivityD.class);
-                startActivity(intentD);
+                Intent intentPhotoActivity = new Intent(MainActivity.this, PhotoActivity.class);
+                startActivity(intentPhotoActivity);
                 break;
             case R.id.btnE:
-                Intent intentE = new Intent(MainActivity.this, ActivityE.class);
-                startActivity(intentE);
+                Intent intentShareActivity = new Intent(MainActivity.this, ShareActivity.class);
+                startActivity(intentShareActivity);
                 break;
             case R.id.btnITnetwork:
                 Intent webIntent = new Intent(Intent.ACTION_VIEW);

@@ -42,8 +42,8 @@ nebo zahájit tel. hovor. V obou případech je od systému požadováno otevře
 aktivity - pro psaní SMS nebo pro správu tel. hovorů.
 */
 
-public class ActivityC extends AppCompatActivity {
 
+public class PhoneActivity extends AppCompatActivity {
     EditText etPhoneNumber;     // Políčko pro zadání tel. čísla
     EditText etSmsText;         // Políčko pro zadání textu SMS
     Button btnDial;             // Tlačítko pro vytočení tel. čísla
@@ -57,7 +57,7 @@ public class ActivityC extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Nastavení připraveného XML návrhu grafického uživatelského rozhraní této aktivitě
-        setContentView(R.layout.activity_c);
+        setContentView(R.layout.phone_activity);
 
         // Nastavení textu toolbaru
         setTitle(R.string.activity_c_title);

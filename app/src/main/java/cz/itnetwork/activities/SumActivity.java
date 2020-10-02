@@ -40,8 +40,7 @@ Aktivita ActivitySum čísla sečte a výsledek vrátí zpět do této aktivity.
 Výsledek obdržíme v přepsané metodě onActivityResult().
 */
 
-public class ActivityA extends AppCompatActivity {
-
+public class SumActivity extends AppCompatActivity {
     EditText etNumber1, etNumber2;      // Políčko pro zadání čísel k součtu
     Button btnSend;                     // Tlačítko pro odeslní čísel do ActivitySum
     TextView labelResult;               // Label pro zobrazení vráceného součtu zadaných čísel
@@ -54,7 +53,7 @@ public class ActivityA extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Nastavení připraveného XML návrhu grafického uživatelského rozhraní této aktivitě
-        setContentView(R.layout.activity_a);
+        setContentView(R.layout.sum_activity);
 
         // Nastavení textu toolbaru
         setTitle(R.string.activity_a_title);

@@ -33,16 +33,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 /*
-Tato aktivita bude otevírána aktivitou ActivityA, od které bude přijímat dvě čísla. Úkolem této
+Tato aktivita bude otevírána aktivitou SumActivity, od které bude přijímat dvě čísla. Úkolem této
 aktivity bude tato dvě čísla sečíst a zobrazit výsledek. Stisknutím tlačítka "Odeslat součet" bude
-tento výsledek odeslán zpět do aktivity ActivityA.
+tento výsledek odeslán zpět do aktivity SumActivity.
 */
 public class ActivitySum extends AppCompatActivity {
 
     TextView labelNumber1;      // Zobrazení prvního příchozího čísla
     TextView labelNumber2;      // Zobrazení druhého příchozího čísla
     TextView labelResult;       // Zobrazení výsledku součtu příchozích čísel
-    Button btnSend;             // Tlačítko pro odeslání odpovědi do aktivity ActivityA
+    Button btnSend;             // Tlačítko pro odeslání odpovědi do aktivity SumActivity
 
     int number1 = 0;
     int number2 = 0;
@@ -54,19 +54,19 @@ public class ActivitySum extends AppCompatActivity {
             // Podle id stisknuté komponenty zjistíme co bylo stisknuto. Referenci na stisknutou
             // komponentu získáme v parametru metody onClick(View v).
             if (v.getId() == R.id.btnSend) {
-                // Vytvoření intentu, který zde slouží pouze jako kontejner dat pro ActivityA
+                // Vytvoření intentu, který zde slouží pouze jako kontejner dat pro SumActivity
                 Intent resultIntent = new Intent();
 
                 // Přidání dat do intentu -> výsledek součtu přijatých čísel. Je použit klíč
-                // "result_from_activity_sum", díky kterému si tato data vyzvedneme v ActivityA
+                // "result_from_activity_sum", díky kterému si tato data vyzvedneme v SumActivity
                 resultIntent.putExtra("result_from_activity_sum", number1 + number2);
 
                 // Nastavení výsledku z této aktivity pro aktivitu, ze které byla tato
-                // aktivita otevřena. Typ tohoto výsledku rozlišujeme v aktivitě ActivityA
+                // aktivita otevřena. Typ tohoto výsledku rozlišujeme v aktivitě SumActivity
                 // v metodě onActivityResult().
                 setResult(RESULT_OK, resultIntent);
 
-                // Zavření této aktivity a návrat do ActivityA
+                // Zavření této aktivity a návrat do SumActivity
                 finish();
             }
         }

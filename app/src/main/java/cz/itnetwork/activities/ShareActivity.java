@@ -35,8 +35,7 @@ import androidx.appcompat.app.AppCompatActivity;
 Aktivita uživateli umožňuje do políčka vložit jakýkoliv text, který dále může sdílet do jiných aplikací
 */
 
-public class ActivityE extends AppCompatActivity {
-
+public class ShareActivity extends AppCompatActivity {
     EditText etTextToShareText;     // Políčko pro zadání textu
     ImageView imgShare;             // Obrázek (tlačítko) pro sdílení zadaného textu
 
@@ -45,7 +44,7 @@ public class ActivityE extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Nastavení připraveného XML návrhu grafického uživatelského rozhraní této aktivitě
-        setContentView(R.layout.activity_e);
+        setContentView(R.layout.share_activity);
 
         // Nastavení textu toolbaru
         setTitle(R.string.activity_e_title);
@@ -65,7 +64,7 @@ public class ActivityE extends AppCompatActivity {
                     }
                 }
 
-                Toast.makeText(ActivityE.this, R.string.info_no_text, Toast.LENGTH_LONG).show();
+                Toast.makeText(ShareActivity.this, R.string.info_no_text, Toast.LENGTH_LONG).show();
             }
         });
     }
