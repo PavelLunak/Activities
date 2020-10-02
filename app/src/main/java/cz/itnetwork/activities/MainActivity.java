@@ -50,23 +50,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void click(View view) {
         switch (view.getId()) {
-            case R.id.btnA:
+            case R.id.btnSumActivity:
                 Intent intentSumActivity = new Intent(MainActivity.this, SumActivity.class);
                 startActivity(intentSumActivity);
                 break;
-            case R.id.btnB:
+            case R.id.btnMapActivity:
                 Intent intentMapActivity = new Intent(MainActivity.this, MapActivity.class);
                 startActivity(intentMapActivity);
                 break;
-            case R.id.btnC:
+            case R.id.btnPhoneActivity:
                 Intent intentPhoneActivity = new Intent(MainActivity.this, PhoneActivity.class);
                 startActivity(intentPhoneActivity);
                 break;
-            case R.id.btnD:
+            case R.id.btnPhotoActivity:
                 Intent intentPhotoActivity = new Intent(MainActivity.this, PhotoActivity.class);
                 startActivity(intentPhotoActivity);
                 break;
-            case R.id.btnE:
+            case R.id.btnShareActivity:
                 Intent intentShareActivity = new Intent(MainActivity.this, ShareActivity.class);
                 startActivity(intentShareActivity);
                 break;
