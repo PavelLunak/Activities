@@ -67,7 +67,7 @@ public class MapActivity extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.map_activity);
 
         // Nastavení textu toolbaru
-        setTitle(R.string.activity_b_title);
+        setTitle(R.string.map_activity_title);
 
         // Reference na komponenty v XML návrhu
         seekBarLatitude = findViewById(R.id.seekBarLatitude);

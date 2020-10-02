@@ -26,7 +26,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_activity_c">
+    android:background="@color/bg_activity_phone_activity">
 
     <LinearLayout
         android:id="@+id/layoutButtons"
@@ -43,7 +43,7 @@
             android:layout_marginTop="10dp"
             android:layout_weight="0.5"
             android:onClick="dial"
-            android:text="@string/activity_c_button_dial"
+            android:text="@string/phone_activity_button_dial"
             android:textAllCaps="false" />
 
         <Button
@@ -53,7 +53,7 @@
             android:layout_marginTop="10dp"
             android:layout_weight="0.5"
             android:onClick="sendSms"
-            android:text="@string/activity_c_button_sms"
+            android:text="@string/phone_activity_button_sms"
             android:textAllCaps="false" />
 
     </LinearLayout>
@@ -72,8 +72,8 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/activity_c_title"
-                android:textColor="@color/text_color_activity_c"
+                android:text="@string/phone_activity_title"
+                android:textColor="@color/text_color_activity_phone_activity"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,8 +84,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/activity_c_desc"
-                android:textColor="@color/text_color_activity_c"
+                android:text="@string/phone_activity_desc"
+                android:textColor="@color/text_color_activity_phone_activity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -96,8 +96,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="32dp"
-                android:text="@string/activity_c_phone"
-                android:textColor="@color/text_color_activity_c"
+                android:text="@string/phone_activity_phone"
+                android:textColor="@color/text_color_activity_phone_activity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -110,7 +110,7 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="phone"
-                android:textColor="@color/text_color_activity_c"
+                android:textColor="@color/text_color_activity_phone_activity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -120,8 +120,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="@string/activity_c_sms_text"
-                android:textColor="@color/text_color_activity_c"
+                android:text="@string/phone_activity_sms_text"
+                android:textColor="@color/text_color_activity_phone_activity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber" />
@@ -137,7 +137,7 @@
                 android:inputType="textMultiLine"
                 android:lines="3"
                 android:padding="5dp"
-                android:textColor="@color/bg_activity_c"
+                android:textColor="@color/text_color_activity_phone_activity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />

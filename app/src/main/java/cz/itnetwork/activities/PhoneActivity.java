@@ -60,7 +60,7 @@ public class PhoneActivity extends AppCompatActivity {
         setContentView(R.layout.phone_activity);
 
         // Nastavení textu toolbaru
-        setTitle(R.string.activity_c_title);
+        setTitle(R.string.phone_activity_title);
 
         // Reference na komponenty v XML návrhu
         etPhoneNumber = findViewById(R.id.etPhoneNumber);

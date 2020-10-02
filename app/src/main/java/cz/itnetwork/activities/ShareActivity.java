@@ -47,7 +47,7 @@ public class ShareActivity extends AppCompatActivity {
         setContentView(R.layout.share_activity);
 
         // Nastavení textu toolbaru
-        setTitle(R.string.activity_e_title);
+        setTitle(R.string.share_activity_title);
 
         // Reference na komponenty v XML návrhu
         etTextToShareText = findViewById(R.id.etTextToShareText);

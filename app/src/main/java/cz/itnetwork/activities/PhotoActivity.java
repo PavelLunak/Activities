@@ -80,7 +80,7 @@ public class PhotoActivity extends AppCompatActivity {
         setContentView(R.layout.photo_activity);
 
         // Nastavení textu toolbaru
-        setTitle(R.string.activity_d_title);
+        setTitle(R.string.photo_activity_title);
 
         // Reference na komponenty v XML návrhu
         image = findViewById(R.id.image);

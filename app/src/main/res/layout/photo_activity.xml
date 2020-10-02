@@ -26,7 +26,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_activity_d"
+    android:background="@color/bg_activity_photo_activity"
     android:scrollbars="vertical">
 
     <ScrollView
@@ -45,8 +45,8 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/activity_d_title"
-                android:textColor="@color/text_color_activity_d"
+                android:text="@string/photo_activity_title"
+                android:textColor="@color/text_color_activity_photo_activity"
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -57,8 +57,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/activity_d_desc"
-                android:textColor="@color/text_color_activity_d"
+                android:text="@string/photo_activity_desc"
+                android:textColor="@color/text_color_activity_photo_activity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -92,8 +92,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="24dp"
                 android:onClick="selectImage"
-                android:text="@string/activity_d_img_click"
-                android:textColor="@color/text_color_activity_d"
+                android:text="@string/photo_activity_img_click"
+                android:textColor="@color/text_color_activity_photo_activity"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

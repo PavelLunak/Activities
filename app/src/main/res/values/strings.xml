@@ -28,48 +28,48 @@
 
     <!-- Titulní texty aktivit -->
     <string name="activity_main_title">Hlavní aktivita</string>
-    <string name="activity_a_title">SumActivity</string>
-    <string name="activity_b_title">MapActivity</string>
-    <string name="activity_c_title">PhoneActivity</string>
-    <string name="activity_d_title">PhotoActivity</string>
-    <string name="activity_e_title">ShareActivity</string>
+    <string name="sum_activity_title">SumActivity</string>
+    <string name="map_activity_title">MapActivity</string>
+    <string name="phone_activity_title">PhoneActivity</string>
+    <string name="photo_activity_title">PhotoActivity</string>
+    <string name="share_activity_title">ShareActivity</string>
     <string name="activity_sum_title">Součet čísel</string>
 
     <!-- Texty tlačítek v hlavní aktivitě -->
-    <string name="activity_main_btn_a">Součet čísel</string>
-    <string name="activity_main_btn_b">Zobrazení mapy</string>
-    <string name="activity_main_btn_c">Telefon a SMS</string>
-    <string name="activity_main_btn_d">Fotoaparát, Galerie a sdílení fotografie</string>
-    <string name="activity_main_btn_e">Sdílení textu</string>
+    <string name="activity_main_btn_sum_activity">Součet čísel</string>
+    <string name="activity_main_btn_map_activity">Zobrazení mapy</string>
+    <string name="activity_main_btn_phone_activity">Telefon a SMS</string>
+    <string name="activity_main_btn_photo_activity">Fotoaparát, Galerie a sdílení fotografie</string>
+    <string name="activity_main_btn_share_activity">Sdílení textu</string>
     <string name="activity_main_btn_itnetwork">ITnetwork.cz (otevření webu)</string>
 
     <!-- Popis aktivit -->
-    <string name="activity_a_desc">Oboustranná komunikace dvou aktivit. Tato aktivita od uživatele získá dvě čísla, která tlačítkem odešleme do jiné aktivity, kde tato čísla budou sečtena a výsledek bude vrácen do této aktivity.</string>
-    <string name="activity_b_desc">Použití aktivit jiných aplikací, nainstalovaných v telefonu. V aktivitě nastavíme libovolné zeměpisné souřadnice a odešleme je systému pro zobrazení pozice v aplikaci s mapami.</string>
-    <string name="activity_c_desc">Použití systémových aktivit. V této aktivitě zadáme telefonní číslo, na které můžeme zatelefonovat nebo odeslat SMS. V obou případech bude, po stisku příslušného tlačítka, otevřena systémová aktivita, která náš záměr dokončí. Dokud nebude zadáno telefonní číslo ve správném formátu, budou tlačítka neaktivní.</string>
-    <string name="activity_d_desc">Použítí systémové aktivity pro výběr obrázku z galerie zařízení a pro pořízení fotografie a pro sdílení vybraného (vyfotografovaného) obrázku.</string>
-    <string name="activity_e_desc">Ukázka sdílení jednoduchého textu.</string>
+    <string name="sum_activity_desc">Oboustranná komunikace dvou aktivit. Tato aktivita od uživatele získá dvě čísla, která tlačítkem odešleme do jiné aktivity, kde tato čísla budou sečtena a výsledek bude vrácen do této aktivity.</string>
+    <string name="map_activity_desc">Použití aktivit jiných aplikací, nainstalovaných v telefonu. V aktivitě nastavíme libovolné zeměpisné souřadnice a odešleme je systému pro zobrazení pozice v aplikaci s mapami.</string>
+    <string name="phone_activity_desc">Použití systémových aktivit. V této aktivitě zadáme telefonní číslo, na které můžeme zatelefonovat nebo odeslat SMS. V obou případech bude, po stisku příslušného tlačítka, otevřena systémová aktivita, která náš záměr dokončí. Dokud nebude zadáno telefonní číslo ve správném formátu, budou tlačítka neaktivní.</string>
+    <string name="photo_activity_desc">Použítí systémové aktivity pro výběr obrázku z galerie zařízení a pro pořízení fotografie a pro sdílení vybraného (vyfotografovaného) obrázku.</string>
+    <string name="share_activity_desc">Ukázka sdílení jednoduchého textu.</string>
     <string name="activity_sum_desc">Aktivita přijímá dvě čísla, jejichž součet vrátí zpět volající aktivitě.</string>
 
     <!-- Texty pro aktivitu A -->
-    <string name="activity_a_number_1">První číslo:</string>
-    <string name="activity_a_number_2">Druhé číslo:</string>
-    <string name="activity_a_result">Výsledek výpočtu:</string>
-    <string name="activity_a_button">Odeslat k výpočtu</string>
+    <string name="sum_activity_number_1">První číslo:</string>
+    <string name="sum_activity_number_2">Druhé číslo:</string>
+    <string name="sum_activity_result">Výsledek výpočtu:</string>
+    <string name="suma_ctivity_button">Odeslat k výpočtu</string>
 
     <!-- Texty pro aktivitu B -->
-    <string name="activity_b_latitude">Zeměpisná šířka:</string>
-    <string name="activity_b_longitude">Zeměpisná výška:</string>
-    <string name="activity_b_button">Zobrazit na mapě</string>
+    <string name="map_activity_latitude">Zeměpisná šířka:</string>
+    <string name="map_activity_longitude">Zeměpisná výška:</string>
+    <string name="map_activity_button">Zobrazit na mapě</string>
 
     <!-- Texty pro aktivitu C -->
-    <string name="activity_c_phone">Zadej telefonní číslo:</string>
-    <string name="activity_c_sms_text">Budeš-li odesílat SMS, zadej její text:</string>
-    <string name="activity_c_button_dial">Zavolat</string>
-    <string name="activity_c_button_sms">Poslat SMS</string>
+    <string name="phone_activity_phone">Zadej telefonní číslo:</string>
+    <string name="phone_activity_sms_text">Budeš-li odesílat SMS, zadej její text:</string>
+    <string name="phone_activity_button_dial">Zavolat</string>
+    <string name="phone_activity_button_sms">Poslat SMS</string>
 
     <!-- Texty pro aktivitu D -->
-    <string name="activity_d_img_click">VYBRAT OBRÁZEK NEBO POŘÍDIT FOTOGRAFII</string>
+    <string name="photo_activity_img_click">VYBRAT OBRÁZEK NEBO POŘÍDIT FOTOGRAFII</string>
 
     <!-- Texty pro aktivitu sčítající dvě přijatá čísla -->
     <string name="activity_sum_number_one">První přijaté číslo:</string>
