@@ -51,24 +51,24 @@
     <string name="share_activity_desc">Ukázka sdílení jednoduchého textu.</string>
     <string name="activity_sum_desc">Aktivita přijímá dvě čísla, jejichž součet vrátí zpět volající aktivitě.</string>
 
-    <!-- Texty pro aktivitu A -->
+    <!-- Texty pro aktivitu SumActivity -->
     <string name="sum_activity_number_1">První číslo:</string>
     <string name="sum_activity_number_2">Druhé číslo:</string>
     <string name="sum_activity_result">Výsledek výpočtu:</string>
     <string name="suma_ctivity_button">Odeslat k výpočtu</string>
 
-    <!-- Texty pro aktivitu B -->
+    <!-- Texty pro aktivitu MapActivity -->
     <string name="map_activity_latitude">Zeměpisná šířka:</string>
     <string name="map_activity_longitude">Zeměpisná výška:</string>
     <string name="map_activity_button">Zobrazit na mapě</string>
 
-    <!-- Texty pro aktivitu C -->
+    <!-- Texty pro aktivitu PhoneActivity -->
     <string name="phone_activity_phone">Zadej telefonní číslo:</string>
     <string name="phone_activity_sms_text">Budeš-li odesílat SMS, zadej její text:</string>
     <string name="phone_activity_button_dial">Zavolat</string>
     <string name="phone_activity_button_sms">Poslat SMS</string>
 
-    <!-- Texty pro aktivitu D -->
+    <!-- Texty pro aktivitu PhotoActivity -->
     <string name="photo_activity_img_click">VYBRAT OBRÁZEK NEBO POŘÍDIT FOTOGRAFII</string>
 
     <!-- Texty pro aktivitu sčítající dvě přijatá čísla -->
@@ -92,7 +92,6 @@
     <string name="label_photo_select_gallery">Vybrat z galerie</string>
     <string name="label_photo_select_cancel">Zrušit</string>
 
-    <string name="permission_request">Žádost o oprávnění</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</string>
     <string name="share">Sdílet:</string>
     <string name="show">Zobrazit:</string>
