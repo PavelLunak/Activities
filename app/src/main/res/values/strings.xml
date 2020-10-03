@@ -24,8 +24,6 @@
 <resources>
     <string name="app_name">Activities</string>
 
-    <string name="itnetwork">ITnetwork.cz</string>
-
     <!-- Titulní texty aktivit -->
     <string name="activity_main_title">Hlavní aktivita</string>
     <string name="sum_activity_title">SumActivity</string>
