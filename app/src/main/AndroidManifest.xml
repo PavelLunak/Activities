@@ -25,7 +25,6 @@
     package="cz.itnetwork.activities">
 
     <!-- Výčet oprávnění, která aplikace požaduje -->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -74,12 +73,6 @@
         <!-- Aktivita s fotoaparátem a výběrem souboru z galerie -->
         <activity
             android:name=".PhotoActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
-
-        <!-- Aktivita pro sdílení textu -->
-        <activity
-            android:name=".ShareActivity"
             android:parentActivityName=".MainActivity">
         </activity>
 

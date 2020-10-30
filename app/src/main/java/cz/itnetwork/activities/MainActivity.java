@@ -67,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentPhotoActivity);
                 break;
             case R.id.btnShareActivity:
-                Intent intentShareActivity = new Intent(MainActivity.this, ShareActivity.class);
-                startActivity(intentShareActivity);
                 break;
             case R.id.btnITnetwork:
                 Intent webIntent = new Intent(Intent.ACTION_VIEW);
