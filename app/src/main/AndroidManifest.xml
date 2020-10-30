@@ -24,12 +24,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cz.itnetwork.activities">
 
-    <!-- Výčet oprávnění, která aplikace požaduje -->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -70,30 +64,6 @@
             android:name=".PhoneActivity"
             android:parentActivityName=".MainActivity">
         </activity>
-
-        <!-- Aktivita s fotoaparátem a výběrem souboru z galerie -->
-        <activity
-            android:name=".PhotoActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
-
-        <!-- Aktivita pro sdílení textu -->
-        <activity
-            android:name=".ShareActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
-
-        <!-- File provider potřebný pro API 23 a vyšší -->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="cz.itnetwork.activities.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
-        </provider>
 
     </application>
 
