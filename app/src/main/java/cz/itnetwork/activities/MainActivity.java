@@ -1,23 +1,21 @@
-/*  _____ _______         _                      _
+/*
+ *  _____ _______         _                      _
  * |_   _|__   __|       | |                    | |
  *   | |    | |_ __   ___| |___      _____  _ __| | __  ___ ____
  *   | |    | | '_ \ / _ \ __\ \ /\ / / _ \| '__| |/ / / __|_  /
  *  _| |_   | | | | |  __/ |_ \ V  V / (_) | |  |   < | (__ / /
  * |_____|  |_|_| |_|\___|\__| \_/\_/ \___/|_|  |_|\_(_)___/___|
- *                                _
- *              ___ ___ ___ _____|_|_ _ _____
- *             | . |  _| -_|     | | | |     |  LICENCE
- *             |  _|_| |___|_|_|_|_|___|_|_|_|
- *             |_|
+ *                   ___
+ *                  |  _|___ ___ ___
+ *                  |  _|  _| -_| -_|  LICENCE
+ *                  |_| |_| |___|___|
  *
  *   PROGRAMOVÁNÍ  <>  DESIGN  <>  PRÁCE/PODNIKÁNÍ  <>  HW A SW
  *
- * Tento zdrojový kód je součástí výukových seriálů na
- * IT sociální síti WWW.ITNETWORK.CZ
+ * Tento zdrojový kód pochází z IT sociální sítě WWW.ITNETWORK.CZ
  *
- * Kód spadá pod licenci prémiového obsahu a vznikl díky podpoře
- * našich členů. Je určen pouze pro osobní užití a nesmí být šířen.
- * Více informací na http://www.itnetwork.cz/licence
+ * Můžete ho upravovat a používat jak chcete, musíte však zmínit
+ * odkaz na http://www.itnetwork.cz
  */
 
 package cz.itnetwork.activities;
@@ -55,20 +53,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentSumActivity);
                 break;
             case R.id.btnMapActivity:
-                Intent intentMapActivity = new Intent(MainActivity.this, MapActivity.class);
-                startActivity(intentMapActivity);
                 break;
             case R.id.btnPhoneActivity:
-                Intent intentPhoneActivity = new Intent(MainActivity.this, PhoneActivity.class);
-                startActivity(intentPhoneActivity);
                 break;
             case R.id.btnPhotoActivity:
-                Intent intentPhotoActivity = new Intent(MainActivity.this, PhotoActivity.class);
-                startActivity(intentPhotoActivity);
                 break;
             case R.id.btnShareActivity:
-                Intent intentShareActivity = new Intent(MainActivity.this, ShareActivity.class);
-                startActivity(intentShareActivity);
                 break;
             case R.id.btnITnetwork:
                 Intent webIntent = new Intent(Intent.ACTION_VIEW);

@@ -6,29 +6,20 @@
  *   | |    | | '_ \ / _ \ __\ \ /\ / / _ \| '__| |/ / / __|_  /
  *  _| |_   | | | | |  __/ |_ \ V  V / (_) | |  |   < | (__ / /
  * |_____|  |_|_| |_|\___|\__| \_/\_/ \___/|_|  |_|\_(_)___/___|
- *                                _
- *              ___ ___ ___ _____|_|_ _ _____
- *             | . |  _| -_|     | | | |     |  LICENCE
- *             |  _|_| |___|_|_|_|_|___|_|_|_|
- *             |_|
+ *                   ___
+ *                  |  _|___ ___ ___
+ *                  |  _|  _| -_| -_|  LICENCE
+ *                  |_| |_| |___|___|
  *
  *   PROGRAMOVÁNÍ  <>  DESIGN  <>  PRÁCE/PODNIKÁNÍ  <>  HW A SW
  *
- * Tento zdrojový kód je součástí výukových seriálů na
- * IT sociální síti WWW.ITNETWORK.CZ
+ * Tento zdrojový kód pochází z IT sociální sítě WWW.ITNETWORK.CZ
  *
- * Kód spadá pod licenci prémiového obsahu a vznikl díky podpoře
- * našich členů. Je určen pouze pro osobní užití a nesmí být šířen.
- * Více informací na http://www.itnetwork.cz/licence
+ * Můžete ho upravovat a používat jak chcete, musíte však zmínit
+ * odkaz na http://www.itnetwork.cz
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cz.itnetwork.activities">
-
-    <!-- Výčet oprávnění, která aplikace požaduje -->
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -58,42 +49,6 @@
             android:name=".SumResultActivity"
             android:parentActivityName=".MainActivity">
         </activity>
-
-        <!-- Aktivita pro zobrazení souřadnic v mapě -->
-        <activity
-            android:name=".MapActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
-
-        <!-- Aktivita pro volání a SMS -->
-        <activity
-            android:name=".PhoneActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
-
-        <!-- Aktivita s fotoaparátem a výběrem souboru z galerie -->
-        <activity
-            android:name=".PhotoActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
-
-        <!-- Aktivita pro sdílení textu -->
-        <activity
-            android:name=".ShareActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
-
-        <!-- File provider potřebný pro API 23 a vyšší -->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="cz.itnetwork.activities.fileprovider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
-        </provider>
 
     </application>
 
