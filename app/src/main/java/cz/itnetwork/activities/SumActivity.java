@@ -35,14 +35,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 /*
-Tato aktivita od uživatele získá dvě čísla, která budou odeslána aktivitě ActivitySum.
-Aktivita ActivitySum čísla sečte a výsledek vrátí zpět do této aktivity.
+Tato aktivita od uživatele získá dvě čísla, která budou odeslána aktivitě SumResultActivity.
+Aktivita SumResultActivity čísla sečte a výsledek vrátí zpět do této aktivity.
 Výsledek obdržíme v přepsané metodě onActivityResult().
 */
 
 public class SumActivity extends AppCompatActivity {
     EditText etNumber1, etNumber2;      // Políčko pro zadání čísel k součtu
-    Button btnSend;                     // Tlačítko pro odeslní čísel do ActivitySum
+    Button btnSend;                     // Tlačítko pro odeslní čísel do SumResultActivity
     TextView labelResult;               // Label pro zobrazení vráceného součtu zadaných čísel
 
     int number1, number2;
@@ -86,20 +86,20 @@ public class SumActivity extends AppCompatActivity {
         });
     }
 
-    // Metoda pro vytvoření intentu a pro otevření aktivity ActivitySum,
+    // Metoda pro vytvoření intentu a pro otevření aktivity SumResultActivity,
     // která sečte zadaná čísla a výsledek odšle zpět.
     private void sendData() {
-        // Vytvoření explicitního intentu - má přesně určen cíl -> otevřít aktivitu ActivitySum.
-        Intent sendIntent = new Intent(this, ActivitySum.class);
+        // Vytvoření explicitního intentu - má přesně určen cíl -> otevřít aktivitu SumResultActivity.
+        Intent sendIntent = new Intent(this, SumResultActivity.class);
 
         // Přidání dat do intentu (dvě zadaná čísla). Díky klíčům "number_1" a "number_2" si
-        // zadaná čísla vyzvedneme v aktivitě ActivitySum.
+        // zadaná čísla vyzvedneme v aktivitě SumResultActivity.
         sendIntent.putExtra("number_1", number1);
         sendIntent.putExtra("number_2", number2);
 
-        // Otevření aktivity ActivitySum. Podle zadaného requestCode (druhý parametr) v metodě
-        // onActivityResult() budeme vědět, že jde o odpověď z aktivity ActivitySum. Aktivita
-        // ActivitySum odpověď odešle ve chvíli, kdy bude zavřena tlačítkem "Odeslat součet".
+        // Otevření aktivity SumResultActivity. Podle zadaného requestCode (druhý parametr) v metodě
+        // onActivityResult() budeme vědět, že jde o odpověď z aktivity SumResultActivity. Aktivita
+        // SumResultActivity odpověď odešle ve chvíli, kdy bude zavřena tlačítkem "Odeslat součet".
         startActivityForResult(sendIntent, 1);
     }
 
@@ -115,10 +115,10 @@ public class SumActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
-            // Jde o odpověď z právě zavřené aktivity ActivitySum? (shodují se hodnoty proměnných
+            // Jde o odpověď z právě zavřené aktivity SumResultActivity? (shodují se hodnoty proměnných
             // requestCode zde a v metodě sendData() voláním startActivityForResult()).
             if (requestCode == 1) {
-                // Kontrola příchozích dat z ukončené aktivity ActivitySum
+                // Kontrola příchozích dat z ukončené aktivity SumResultActivity
                 if (data != null) {
                     // Obsahuje odpověď data s klíčem "result_from_activity_sum"?
                     if (data.hasExtra("result_from_activity_sum")) {

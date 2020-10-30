@@ -55,7 +55,7 @@
 
         <!-- Aktivita pro samotný součet čísel, vracející výsledek do SumActivity -->
         <activity
-            android:name=".ActivitySum"
+            android:name=".SumResultActivity"
             android:parentActivityName=".MainActivity">
         </activity>
 

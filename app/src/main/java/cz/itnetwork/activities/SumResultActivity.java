@@ -37,7 +37,7 @@ Tato aktivita bude otevírána aktivitou SumActivity, od které bude přijímat 
 aktivity bude tato dvě čísla sečíst a zobrazit výsledek. Stisknutím tlačítka "Odeslat součet" bude
 tento výsledek odeslán zpět do aktivity SumActivity.
 */
-public class ActivitySum extends AppCompatActivity {
+public class SumResultActivity extends AppCompatActivity {
 
     TextView labelNumber1;      // Zobrazení prvního příchozího čísla
     TextView labelNumber2;      // Zobrazení druhého příchozího čísla
@@ -77,7 +77,7 @@ public class ActivitySum extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Nastavení připraveného XML návrhu grafického uživatelského rozhraní této aktivitě
-        setContentView(R.layout.activity_sum);
+        setContentView(R.layout.sum_result_activity);
 
         // Nastavení textu toolbaru
         setTitle(R.string.activity_sum_title);
