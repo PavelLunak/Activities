@@ -31,7 +31,7 @@
     <string name="phone_activity_title">PhoneActivity</string>
     <string name="photo_activity_title">PhotoActivity</string>
     <string name="share_activity_title">ShareActivity</string>
-    <string name="activity_sum_title">Součet čísel</string>
+    <string name="sum_result_activity_title">Součet čísel</string>
 
     <!-- Texty tlačítek v hlavní aktivitě -->
     <string name="activity_main_btn_sum_activity">Součet čísel</string>
@@ -70,10 +70,10 @@
     <string name="photo_activity_img_click">VYBRAT OBRÁZEK NEBO POŘÍDIT FOTOGRAFII</string>
 
     <!-- Texty pro aktivitu sčítající dvě přijatá čísla -->
-    <string name="activity_sum_number_one">První přijaté číslo:</string>
-    <string name="activity_sum_number_two">Druhé přijaté číslo:</string>
-    <string name="activity_sum_total_sum">Součet přijatých čísel:</string>
-    <string name="activity_sum_button">Odeslat součet</string>
+    <string name="sum_result_activity_number_1">První přijaté číslo:</string>
+    <string name="sum_result_activity_number_2">Druhé přijaté číslo:</string>
+    <string name="sum_result_activity_total_sum">Součet přijatých čísel:</string>
+    <string name="sum_result_activity_button">Odeslat součet</string>
 
     <!-- Texty informativních a chybových zpráv pro uživatele -->
     <string name="info_no_result">Nepřišel žádný výsledek...</string>

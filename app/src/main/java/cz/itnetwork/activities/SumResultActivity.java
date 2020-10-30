@@ -80,7 +80,7 @@ public class SumResultActivity extends AppCompatActivity {
         setContentView(R.layout.sum_result_activity);
 
         // Nastavení textu toolbaru
-        setTitle(R.string.activity_sum_title);
+        setTitle(R.string.sum_result_activity_title);
 
         // Reference na komponenty v XML návrhu
         labelNumber1 = findViewById(R.id.labelNumber1);
