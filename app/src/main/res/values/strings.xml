@@ -28,10 +28,7 @@
     <string name="activity_main_title">Hlavní aktivita</string>
     <string name="sum_activity_title">SumActivity</string>
     <string name="map_activity_title">MapActivity</string>
-    <string name="phone_activity_title">PhoneActivity</string>
-    <string name="photo_activity_title">PhotoActivity</string>
-    <string name="share_activity_title">ShareActivity</string>
-    <string name="activity_sum_title">Součet čísel</string>
+    <string name="sum_result_activity_title">Součet čísel</string>
 
     <!-- Texty tlačítek v hlavní aktivitě -->
     <string name="activity_main_btn_sum_activity">Součet čísel</string>
@@ -44,9 +41,6 @@
     <!-- Popis aktivit -->
     <string name="sum_activity_desc">Oboustranná komunikace dvou aktivit. Tato aktivita od uživatele získá dvě čísla, která tlačítkem odešleme do jiné aktivity, kde tato čísla budou sečtena a výsledek bude vrácen do této aktivity.</string>
     <string name="map_activity_desc">Použití aktivit jiných aplikací, nainstalovaných v telefonu. V aktivitě nastavíme libovolné zeměpisné souřadnice a odešleme je systému pro zobrazení pozice v aplikaci s mapami.</string>
-    <string name="phone_activity_desc">Použití systémových aktivit. V této aktivitě zadáme telefonní číslo, na které můžeme zatelefonovat nebo odeslat SMS. V obou případech bude, po stisku příslušného tlačítka, otevřena systémová aktivita, která náš záměr dokončí. Dokud nebude zadáno telefonní číslo ve správném formátu, budou tlačítka neaktivní.</string>
-    <string name="photo_activity_desc">Použítí systémové aktivity pro výběr obrázku z galerie zařízení a pro pořízení fotografie a pro sdílení vybraného (vyfotografovaného) obrázku.</string>
-    <string name="share_activity_desc">Ukázka sdílení jednoduchého textu.</string>
     <string name="activity_sum_desc">Aktivita přijímá dvě čísla, jejichž součet vrátí zpět volající aktivitě.</string>
 
     <!-- Texty pro aktivitu SumActivity -->
@@ -60,40 +54,19 @@
     <string name="map_activity_longitude">Zeměpisná výška:</string>
     <string name="map_activity_button">Zobrazit na mapě</string>
 
-    <!-- Texty pro aktivitu PhoneActivity -->
-    <string name="phone_activity_phone">Zadej telefonní číslo:</string>
-    <string name="phone_activity_sms_text">Budeš-li odesílat SMS, zadej její text:</string>
-    <string name="phone_activity_button_dial">Zavolat</string>
-    <string name="phone_activity_button_sms">Poslat SMS</string>
-
-    <!-- Texty pro aktivitu PhotoActivity -->
-    <string name="photo_activity_img_click">VYBRAT OBRÁZEK NEBO POŘÍDIT FOTOGRAFII</string>
-
     <!-- Texty pro aktivitu sčítající dvě přijatá čísla -->
-    <string name="activity_sum_number_one">První přijaté číslo:</string>
-    <string name="activity_sum_number_two">Druhé přijaté číslo:</string>
-    <string name="activity_sum_total_sum">Součet přijatých čísel:</string>
-    <string name="activity_sum_button">Odeslat součet</string>
+    <string name="sum_result_activity_number_1">První přijaté číslo:</string>
+    <string name="sum_result_activity_number_2">Druhé přijaté číslo:</string>
+    <string name="sum_result_activity_total_sum">Součet přijatých čísel:</string>
+    <string name="sum_result_activity_button">Odeslat součet</string>
 
     <!-- Texty informativních a chybových zpráv pro uživatele -->
     <string name="info_no_result">Nepřišel žádný výsledek...</string>
     <string name="info_error_loading_result">Chyba načítání výsledku...</string>
     <string name="info_incorrect_entry">Chybné zadání...</string>
-    <string name="info_no_text">Není zadán žádný text</string>
 
-    <string name="info_no_image">Není vybrán žádný obrázek</string>
     <string name="info_finish_app">Pro ukončení aplikace stiskněte ZPĚT znovu</string>
-    <string name="info_missing_permissions">Aplikace nemá udělena potřebná oprávnění a proto nelze použít fotoaparát</string>
 
-    <!-- Texty pro dialogové okno výběru způsobu získání obrázku -->
-    <string name="label_photo_use_camera">Vyfotit</string>
-    <string name="label_photo_select_gallery">Vybrat z galerie</string>
-    <string name="label_photo_select_cancel">Zrušit</string>
-
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</string>
-    <string name="share">Sdílet:</string>
-    <string name="show">Zobrazit:</string>
     <string name="incoming_intent_data_error">Chyba přijatých dat...</string>
-    <string name="info_wrong_phone_number_format">Chybný formát tel. čísla...</string>
 
 </resources>

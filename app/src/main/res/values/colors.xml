@@ -30,22 +30,9 @@
     <color name="bg_activity_main">#D9FBFF</color>
     <color name="bg_activity_sum_activity">#AE3128</color>
     <color name="bg_activity_map_activity">#3B7CD6</color>
-    <color name="bg_activity_phone_activity">#009688</color>
-    <color name="bg_activity_photo_activity">#FF9800</color>
-    <color name="bg_activity_share_activity">#FFEB3B</color>
 
     <!-- Barvy textu -->
     <color name="text_color_activity_sum_activity">#EEEEEE</color>
     <color name="text_color_activity_map_activity">#FFF495</color>
-    <color name="text_color_activity_phone_activity">#FFFFFF</color>
-    <color name="text_color_activity_photo_activity">#131515</color>
-    <color name="text_color_activity_share_activity">#A56200</color>
 
-    <!-- Pozadí SMS zprávy v aktivitě C -->
-    <color name="sms_bg_color">#8DFAF0</color>
-    <color name="sms_bg_stroke">#096A61</color>
-
-    <!-- Pozadí textového pole aktivity E -->
-    <color name="share_text_bg_color">#FFFBD7</color>
-    <color name="share_text_bg_stroke">#C3B223</color>
 </resources>
