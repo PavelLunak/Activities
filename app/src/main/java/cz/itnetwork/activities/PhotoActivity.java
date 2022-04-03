@@ -23,6 +23,7 @@
 package cz.itnetwork.activities;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -37,6 +38,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -71,6 +76,78 @@ public class PhotoActivity extends AppCompatActivity {
     private File destination = null;    // Umístění souboru vytvořené fotografie
 
     String currentPhotoPath;            // Pracovní proměnná pro cestu k souboru obrázku (fotografie)
+
+    // Nový způsob zobrazování aktivit
+    ActivityResultLauncher<Intent> pickGaleryLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+
+                        Intent data = result.getData();
+
+                        try {
+                            // Z dat příchozího intentu získáme cestu k vybranému obrázku
+                            Uri selectedImage = data.getData();
+
+                            // Vytvoření bitmapy z vybraného obrázku
+                            if(android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+                                bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(), selectedImage);
+                            } else {
+                                ImageDecoder.Source source = ImageDecoder.createSource(getApplicationContext().getContentResolver(), selectedImage);
+                                bitmap = ImageDecoder.decodeBitmap(source);
+                            }
+
+                            // Zmenšení obrázku
+                            if (bitmap.getWidth() > 1024) {
+                                bitmap = getResizedBitmap(bitmap, 1024);
+                            }
+
+                            // Nastavení komponentě ImageView vybraný obrázek
+                            image.setImageBitmap(bitmap);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Log.d(AppConstants.LOG_TAG, "ActivityNewPerson -> gallery image processing error");
+                            Log.d(AppConstants.LOG_TAG, e.getMessage());
+                        }
+                    }
+                }
+            });
+
+    ActivityResultLauncher<Intent> takePhotoLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        // Vytvoření fotografie
+                        File file = new File(currentPhotoPath);
+
+                        try {
+                            bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.fromFile(file));
+                            // Odstranění původní fotografie, která přišla z fotoaparátu - již ji nepotřebujeme
+                            file.delete();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Log.d(AppConstants.LOG_TAG, e.getMessage());
+                        }
+
+                        if (bitmap != null) {
+                            // Zmenšení fotografie
+                            if (bitmap.getWidth() > 1024) {
+                                bitmap = getResizedBitmap(bitmap, 1024);
+                            }
+
+                            // Uložení fotografie do úložiště
+                            saveBitmap(bitmap);
+
+                            // Nastavení komponentě ImageView vytviřenou fotografii
+                            image.setImageBitmap(bitmap);
+                        }
+                    }
+                }
+            });
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -203,13 +280,18 @@ public class PhotoActivity extends AppCompatActivity {
                         String[] mimeTypes = {"image/jpeg", "image/png"};
                         pickPhoto.putExtra(Intent.EXTRA_MIME_TYPES,mimeTypes);
 
+                        //Zastaralý způsob zobrazování aktivit
                         /*
                         Otevření aktivity s POŽADAVKEM NA ODPOVĚĎ.
                         Druhým parametrem určujeme číselný "kód", podle kterého v odpovědi poznáme
                         zda je to odpověď na požadavek výběru obrázku z galerie. Odpověď později
                         získáme v překryté metodě onActivityResult()
                         */
-                        startActivityForResult(pickPhoto, AppConstants.REQUEST_PICK_IMAGE_GALLERY);
+
+                        //startActivityForResult(pickPhoto, AppConstants.REQUEST_PICK_IMAGE_GALLERY);
+
+                        // Nový způsob zobrazování aktivit
+                        pickGaleryLauncher.launch(pickPhoto);
                     }
                     // Kliknutí na volbu "Zrušit" - zavření dialogového okna
                     else if (options[item].equals(getString(R.string.label_photo_select_cancel))) {
@@ -248,8 +330,6 @@ public class PhotoActivity extends AppCompatActivity {
                             this,
                             "cz.itnetwork.activities.fileprovider",
                             photoFile);
-
-                    // Předchozí řádek vygeneruje URI: content://cz.itnetwork.activities.fileprovider/my_images/název_souboru
                 }
 
                 grantUriPermission("cz.itnetwork.activities.fileprovider", photoURI, Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -257,7 +337,12 @@ public class PhotoActivity extends AppCompatActivity {
 
                 takePictureIntent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                startActivityForResult(takePictureIntent, AppConstants.REQUEST_PICK_IMAGE_CAMERA);
+
+                //Zastaralý způsob
+                //startActivityForResult(takePictureIntent, AppConstants.REQUEST_PICK_IMAGE_CAMERA);
+
+                // Nový způsob zobrazování aktivit
+                takePhotoLauncher.launch(takePictureIntent);
             }
         }
     }
@@ -416,6 +501,7 @@ public class PhotoActivity extends AppCompatActivity {
         }
     }
 
+    /*
     // Metoda zpětného volání. Tato metoda bude volána po výběru obrázku nebo po vytvoření fotografie.
     // To, která ze zmíněných možností to bude, poznáme podle proměnné requestCode.
     @Override
@@ -481,4 +567,5 @@ public class PhotoActivity extends AppCompatActivity {
             // tlačítkem ZPĚT) nebo byl nastaven na RESULT_CANCELED
         }
     }
+    */
 }
