@@ -20,6 +20,7 @@
 
 package cz.itnetwork.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +30,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -44,6 +49,27 @@ public class SumActivity extends AppCompatActivity {
     TextView labelResult;               // Label pro zobrazení vráceného součtu zadaných čísel
 
     int number1, number2;
+
+    // Nový způsob zobrazování aktivit
+    ActivityResultLauncher<Intent> sumActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        Intent data = result.getData();
+
+                        if (data != null) {
+                            // Obsahuje odpověď data s klíčem "result_from_activity_sum"?
+                            if (data.hasExtra("result_from_activity_sum")) {
+                                labelResult.setText("" + data.getIntExtra("result_from_activity_sum", -1));
+                            } else {
+                                labelResult.setText(R.string.info_error_loading_result);
+                            }
+                        }
+                    }
+                }
+            });
 
 
     @Override
@@ -98,7 +124,12 @@ public class SumActivity extends AppCompatActivity {
         // Otevření aktivity SumResultActivity. Podle zadaného requestCode (druhý parametr) v metodě
         // onActivityResult() budeme vědět, že jde o odpověď z aktivity SumResultActivity. Aktivita
         // SumResultActivity odpověď odešle ve chvíli, kdy bude zavřena tlačítkem "Odeslat součet".
-        startActivityForResult(sendIntent, 1);
+
+        //Zastaralý způsob
+        //startActivityForResult(sendIntent, 1);
+
+        // Nový způsob zobrazování aktivit
+        sumActivityResultLauncher.launch(sendIntent);
     }
 
     // Metoda pro zobrazení zprávy s chybou.
@@ -106,6 +137,7 @@ public class SumActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.info_incorrect_entry, Toast.LENGTH_LONG).show();
     }
 
+    /*
     // Metoda zpětného volání. Pokud bude jakákoliv další aktivita otevřena voláním
     // startActivityForResult() z této aktivity, bude po jejím zavření volána tato metoda.
     @Override
@@ -131,4 +163,5 @@ public class SumActivity extends AppCompatActivity {
             labelResult.setText(R.string.info_no_result);
         }
     }
+    */
 }
