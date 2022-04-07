@@ -32,8 +32,8 @@ import android.graphics.ImageDecoder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -73,8 +73,6 @@ public class PhotoActivity extends AppCompatActivity {
     ImageView imgShare;                 // Tlačítko (obrázek) pro sdílení připraveného obrázku (fotografie)
 
     private Bitmap bitmap = null;       // Proměnná pro budoucí obrázek (fotografii)
-    private File destination = null;    // Umístění souboru vytvořené fotografie
-
     String currentPhotoPath;            // Pracovní proměnná pro cestu k souboru obrázku (fotografie)
 
     // Nový způsob zobrazování aktivit
@@ -108,8 +106,6 @@ public class PhotoActivity extends AppCompatActivity {
                             image.setImageBitmap(bitmap);
                         } catch (Exception e) {
                             e.printStackTrace();
-                            Log.d(AppConstants.LOG_TAG, "ActivityNewPerson -> gallery image processing error");
-                            Log.d(AppConstants.LOG_TAG, e.getMessage());
                         }
                     }
                 }
@@ -130,7 +126,6 @@ public class PhotoActivity extends AppCompatActivity {
                             file.delete();
                         } catch (IOException e) {
                             e.printStackTrace();
-                            Log.d(AppConstants.LOG_TAG, e.getMessage());
                         }
 
                         if (bitmap != null) {
@@ -139,11 +134,11 @@ public class PhotoActivity extends AppCompatActivity {
                                 bitmap = getResizedBitmap(bitmap, 1024);
                             }
 
-                            // Uložení fotografie do úložiště
-                            saveBitmap(bitmap);
-
                             // Nastavení komponentě ImageView vytviřenou fotografii
                             image.setImageBitmap(bitmap);
+
+                            // Vložení fotografie do galerie zařízení
+                            MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, bitmap.toString(), null);
                         }
                     }
                 }
@@ -164,40 +159,6 @@ public class PhotoActivity extends AppCompatActivity {
         imgShare = findViewById(R.id.imgShare);
     }
 
-    // Tato překrytá metoda je volána při ukončení a "zničení" této aktivity. Využijeme ji pro
-    // odstranění všech souborů v úložišti zařízení, které tato aktivita vytvořila.
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
-        // Vytvoření instance umístění pracovní složky této aplikace v umístění, které máme
-        // deklarováno v konstantách.
-        File directory = new File(AppConstants.PATH_PHOTO_DIR);
-        deleteDir(directory);
-    }
-
-    // Odstranění složky a veškerého jejího obsahu. Protože nelze odstranit složku, která není prázdná,
-    // musíme jí procházet a postupně vymazat celý její obsah. Tato metoda je rekurzivní - volá smam sebe.
-    public boolean deleteDir(File fileOrDir) {
-        if (fileOrDir.isDirectory()) {
-            // Jde o složku - musíme jí projít a vymazat její obsah.
-            // Získání seznamu s jejím obsahem.
-            String[] children = fileOrDir.list();
-
-            for (int i = 0; i < children.length; i ++) {
-                // Rekurze - metoda volá sama sebe...
-                boolean success = deleteDir(new File(fileOrDir, children[i]));
-
-                if (!success) {
-                    return false;
-                }
-            }
-        }
-
-        // Nyní je složka prázdná a lze jí odstranit.
-        return fileOrDir.delete();
-    }
-
     // Click listener na ImageView s vybraným nebo vyfotografovaným obrázkem
     // v XML: android:onClick="imageClick"
     public void imageClick(View view) {
@@ -209,7 +170,7 @@ public class PhotoActivity extends AppCompatActivity {
         }
 
         // Získání cesty k souboru
-        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Image Description", null);
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, bitmap.toString(), null);
         Uri uri = Uri.parse(path);
 
         // Metoda pro odeslání souboru
@@ -223,7 +184,7 @@ public class PhotoActivity extends AppCompatActivity {
         }
 
         // Získání cesty k souboru ke sdílení
-        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Image Description", null);
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, bitmap.toString(), null);
         Uri uri = Uri.parse(path);
 
         // Vytvoření implicitního intentu
@@ -326,8 +287,7 @@ public class PhotoActivity extends AppCompatActivity {
                 }
                 // OD verze API 24 nutno použít třídu FileProvider
                 else {
-                    photoURI = FileProvider.getUriForFile(
-                            this,
+                    photoURI = FileProvider.getUriForFile(this,
                             "cz.itnetwork.activities.fileprovider",
                             photoFile);
                 }
@@ -349,54 +309,25 @@ public class PhotoActivity extends AppCompatActivity {
 
     // Metoda pro vytvoření souboru, do kterého bude fotografie uložena
     private File createImageFile() {
-        String fileName = "activities_" + new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date()) + ".jpg";
-        File directory = new File(AppConstants.PATH_PHOTO_DIR);
+        // Vytvoření názvu souboru obrázku
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = null;
 
-        if (directory == null) {
-            return null;
+        try {
+            image = File.createTempFile(
+                    imageFileName,
+                    ".jpg",
+                    storageDir
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
-
-        File image = new File(directory, fileName);
 
         // Uložení cesty k vytvořenému souboru pro budoucí fotografii
         currentPhotoPath = image.getAbsolutePath();
         return image;
-    }
-
-    // Uložení vytvořené fotografie
-    private void saveBitmap(Bitmap bitmap) {
-        String directoryPath = AppConstants.PATH_PHOTO_DIR;
-        File directory = new File(directoryPath);
-
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
-
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
-
-        try {
-            destination = new File(directory, "" + new Date().getTime() + ".jpg");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return;
-        }
-
-        FileOutputStream fo;
-        try {
-            destination.createNewFile();
-            fo = new FileOutputStream(destination);
-            fo.write(bytes.toByteArray());
-            fo.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     // Metoda pro zmenšení fotografie (obrázku)
@@ -463,6 +394,7 @@ public class PhotoActivity extends AppCompatActivity {
 
     // Odeslání obrázku systému pro jeho zobrazení v prohlížeči obrázků
     private void showPhoto(Uri photoUri) {
+
         // Vytvoření implicitního intentu
         Intent intent = new Intent();
 
@@ -533,8 +465,6 @@ public class PhotoActivity extends AppCompatActivity {
                     image.setImageBitmap(bitmap);
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Log.d(AppConstants.LOG_TAG, "ActivityNewPerson -> gallery image processing error");
-                    Log.d(AppConstants.LOG_TAG, e.getMessage());
                 }
             } else if (requestCode == AppConstants.REQUEST_PICK_IMAGE_CAMERA) {
                 // Vytvoření fotografie
