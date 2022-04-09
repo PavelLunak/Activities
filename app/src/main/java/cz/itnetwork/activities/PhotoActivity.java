@@ -73,7 +73,6 @@ public class PhotoActivity extends AppCompatActivity {
     ImageView imgShare;                 // Tlačítko (obrázek) pro sdílení připraveného obrázku (fotografie)
 
     private Bitmap bitmap = null;       // Proměnná pro budoucí obrázek (fotografii)
-
     String currentPhotoPath;            // Pracovní proměnná pro cestu k souboru obrázku (fotografie)
 
     // Nový způsob zobrazování aktivit
@@ -477,7 +476,6 @@ public class PhotoActivity extends AppCompatActivity {
                     file.delete();
                 } catch (IOException e) {
                     e.printStackTrace();
-                    Log.d(AppConstants.LOG_TAG, e.getMessage());
                 }
 
                 if (bitmap != null) {
@@ -485,9 +483,6 @@ public class PhotoActivity extends AppCompatActivity {
                     if (bitmap.getWidth() > 1024) {
                         bitmap = getResizedBitmap(bitmap, 1024);
                     }
-
-                    // Uložení fotografie do úložiště
-                    saveBitmap(bitmap);
 
                     // Nastavení komponentě ImageView vytviřenou fotografii
                     image.setImageBitmap(bitmap);
